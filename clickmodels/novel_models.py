@@ -9,10 +9,12 @@ import math
 from collections import defaultdict
 
 DEFAULT_REDUNDANCY = 0.5
+DEFAULT_USEINFO = True
 
 class N_UbmModel(ClickModel):
-    def __init__(self, ignoreIntents=True, ignoreLayout=True, config=None):
+    def __init__(self, ignoreIntents=True, ignoreLayout=True, param=None, config=None):
         ClickModel.__init__(self, ignoreIntents, ignoreLayout, config)
+        self.param = {} if param is None else param
 
     def train(self, sessions):
         max_query_id = self.config.get('MAX_QUERY_ID')
